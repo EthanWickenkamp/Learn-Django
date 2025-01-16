@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  web:
+    build: 
+      context: ../
+      # one level up from directory this file is in
+      dockerfile: Dockerfile
+      # specify dockerfile location and name
+    working_dir: /app
+
+    ports:
+      - "8000:8000"
+    # maps container port to host port
+    volumes:
+      - .:/app
+    # maps host directory to make changes in container
+    
+  
+  
+  db:
+  image: postgres:latest
+  environment:
+    POSTGRES_USER: your_user
+    POSTGRES_PASSWORD: your_password
+    POSTGRES_DB: your_database
+  volumes:
+    - db_data:/var/lib/postgresql/data
+  ports:
+    - "5432:5432"
+
+
+
+
+
+# define and manage multi-container applications
+# web is django
+# db for database

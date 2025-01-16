@@ -1,0 +1,41 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
+{
+	"name": "Django Dev Container",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
+	// override devcontainer workspace directory and mount the source=host workspace to the target=/app in the container
+	"workspaceFolder": "/app",
+	// sets folder for vs code
+	"build": {
+		// Sets the run context to one level up instead of the .devcontainer folder.
+		"context": "..",
+		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+		"dockerfile": "Dockerfile"
+	},
+	
+	"customizations": {
+        "vscode": {
+			"settings": {},
+            "extensions": [
+                "ms-python.python",
+				"ms-azuretools.vscode-docker"
+            ]
+        }
+    },
+	"forwardPorts": [8000]
+	// "postCreateCommand": "pip install -r requirements.txt"
+	//"postCreateCommand": "/bin/bash entrypoint.sh"
+
+	//"postCreateCommand": "python learn/manage.py runserver 0.0.0.0:8000"
+	
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Uncomment the next line to run commands after the container is created.
+	// "postCreateCommand": "cat /etc/os-release",
+	// Configure tool-specific properties.
+	// "customizations": {},
+	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "devcontainer"
+}
