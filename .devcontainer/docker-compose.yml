@@ -1,37 +1,24 @@
-version: '3.8'
 services:
+
+
   web:
+    container_name: django_web
     build: 
-      context: ../
-      # one level up from directory this file is in
-      dockerfile: Dockerfile
-      # specify dockerfile location and name
-    working_dir: /app
-
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
     ports:
-      - "8000:8000"
-    # maps container port to host port
+     - "8000:8000"
     volumes:
-      - .:/app
-    # maps host directory to make changes in container
-    
-  
-  
+     - ..:/app
+    working_dir: /app/learn
+    command: python manage.py runserver 0.0.0.0:8000
+
   db:
-  image: postgres:latest
-  environment:
-    POSTGRES_USER: your_user
-    POSTGRES_PASSWORD: your_password
-    POSTGRES_DB: your_database
-  volumes:
-    - db_data:/var/lib/postgresql/data
-  ports:
-    - "5432:5432"
+    container_name: sqlite_db
+    image: nouchka/sqlite3:latest
+    volumes:
+     - sqlite_data:/sqlite_data
 
 
-
-
-
-# define and manage multi-container applications
-# web is django
-# db for database
+volumes:
+  sqlite_data:
