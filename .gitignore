@@ -1,0 +1,20 @@
+# Ignore the .env file
+.env
+
+# Python-related ignores
+*.pyc
+*.pyo
+__pycache__/
+
+# Django-related ignores
+db.sqlite3
+/media/
+staticfiles/
+
+# Docker-related ignores
+*.env
+*.log
+.env.*
+
+# VS Code-related ignores
+.vscode/

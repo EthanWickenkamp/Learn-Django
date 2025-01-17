@@ -6,19 +6,45 @@ services:
     build: 
       context: ..
       dockerfile: .devcontainer/Dockerfile
+    env_file:
+     - ../config/.env
     ports:
      - "8000:8000"
     volumes:
      - ..:/app
+    depends_on:
+      - db
+
+
     working_dir: /app/learn
-    command: python manage.py runserver 0.0.0.0:8000
+    #command: python manage.py runserver 0.0.0.0:8000
+    #command: bash config/ss.sh
+    command: bash
 
   db:
-    container_name: sqlite_db
-    image: nouchka/sqlite3:latest
+    container_name: mysql_db
+    image: mysql:latest
+    #restart: always
+        
+    env_file:
+     - ../config/.env
+  # Set the root password
+
+    ports:
+     - "3306:3306"
     volumes:
-     - sqlite_data:/sqlite_data
+    - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+     
+    #command: --authentication-policy=mysql_native_password
+
 
 
 volumes:
-  sqlite_data:
+  mysql_data:
