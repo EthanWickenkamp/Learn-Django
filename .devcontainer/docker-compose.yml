@@ -1,17 +1,43 @@
 services:
 
 
+  db:
+    container_name: mysql_db
+    image: mysql:latest
+    #restart: always
+        
+    env_file:
+     - ../config/.env
+    volumes:
+    - mysql_data:/var/lib/mysql
+    #- ./db-init-scripts:/docker-entrypoint-initdb.d
+
+    ports:
+     - "3306:3306"
+    
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+
+
   web:
     container_name: django_web
     build: 
       context: ..
       dockerfile: .devcontainer/Dockerfile
+
     env_file:
      - ../config/.env
-    ports:
-     - "8000:8000"
     volumes:
      - ..:/app
+
+    ports:
+     - "8000:8000"
+
     depends_on:
       - db
 
@@ -20,31 +46,7 @@ services:
     #command: bash config/ss.sh
     command: bash
 
-  db:
-    container_name: mysql_db
-    image: mysql:latest
-    #restart: always
-        
-    env_file:
-     - ../config/.env
-  # Set the root password
-
-    ports:
-     - "3306:3306"
-    volumes:
-    - mysql_data:/var/lib/mysql
-    #- ./init.sql:/docker-entrypoint-initdb.d/init.sql
-
-    # healthcheck:
-    #   test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-    #   interval: 10s
-    #   timeout: 5s
-    #   retries: 3
-
-     
-    #command: --authentication-policy=mysql_native_password
-
-
+  
 
 volumes: 
   mysql_data:

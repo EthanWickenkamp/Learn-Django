@@ -1,12 +1,19 @@
-FROM python:3.10-slim
+FROM python:3.12-slim
 
 RUN apt-get update && apt-get install -y \
     curl \
     wget \
     git \
     bash \
+    # get basic commands because -slim
+    pkg-config\
+    build-essential\
+    python3-dev\
+    default-libmysqlclient-dev\
+    #sql client dependencies
     && rm -rf /var/lib/apt/lists/*
-# get basic commands because -slim
+    #remove leftover
+
 
 WORKDIR /app 
 #set working directory to app

@@ -1,0 +1,9 @@
+{% if items %}
+    <ul>
+    {% for item in items %}
+        <li><a href="{% url 'firstapp:item_url_name' %}">{{ item.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No items are available.</p>
+{% endif %}
