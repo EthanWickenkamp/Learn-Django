@@ -6,7 +6,7 @@
     // Fetch items from Django API
     onMount(async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/items/');
+            const response = await fetch('api/items/');
             if (response.ok) {
                 items = await response.json();
             } else {

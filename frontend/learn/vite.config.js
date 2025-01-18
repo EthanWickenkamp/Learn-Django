@@ -3,6 +3,19 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
 	plugins: [sveltekit()],
-	port: 5173,
-    host: '0.0.0.0', // Allows access from Docker and localhost
+
+	server: {
+        host: '0.0.0.0', // Allows access from Docker and other network interfaces
+        port: 5173,      // Default SvelteKit dev server port
+		watch: {
+			usePolling: true, // Necessary for file change detection in Docker
+		},
+        proxy: {
+            '/api': {
+                target: 'http://web:8000', // Django backend
+                changeOrigin: true,             // Needed for proxying cross-origin requests
+                rewrite: (path) => path.replace(/^\/api/, '/api'), // Keeps the /api prefix intact
+            },
+        },
+    },
 });
