@@ -3,3 +3,4 @@ python-decouple
 mysqlclient
 cryptography
 djangorestframework
+django-cors-headers
