@@ -1,13 +1,12 @@
 services:
 
-
   db:
     container_name: mysql_db
     image: mysql:latest
     #restart: always
         
     env_file:
-     - ../config/.env
+     - ./.env
     volumes:
     - mysql_data:/var/lib/mysql
     #- ./db-init-scripts:/docker-entrypoint-initdb.d
@@ -23,30 +22,46 @@ services:
       retries: 3
 
 
-
   web:
     container_name: django_web
     build: 
-      context: ..
+      context: ./backend
       dockerfile: .devcontainer/Dockerfile
 
     env_file:
-     - ../config/.env
+     - ./.env
     volumes:
-     - ..:/app
+     - ./backend:/app
 
     ports:
      - "8000:8000"
 
+    working_dir: /app
+    command: bash ss.sh
+
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
-    working_dir: /app/learn
-    #command: python manage.py runserver 0.0.0.0:8000
-    #command: bash config/ss.sh
-    command: bash
 
-  
+  frontend:
+    container_name: svelte_frontend
+    build:
+      context: ./frontend
+      dockerfile: .devcontainer/Dockerfile
+
+    env_file:
+     - ./.env
+    volumes: 
+     - ./frontend:/app
+    
+    ports:
+     - "5173:5173"
+
+    working_dir: /app
+    command: bash ss.sh
+
+
 
 volumes: 
   mysql_data:

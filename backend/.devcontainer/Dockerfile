@@ -19,7 +19,7 @@ WORKDIR /app
 #set working directory to app
 #where docker will execute next commands
 
-COPY /config/requirements.txt .
+COPY requirements.txt .
 #copy requirements into root of the workdir
 RUN pip install --no-cache-dir -r requirements.txt
 #install requirements that we just copied in
