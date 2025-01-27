@@ -8,4 +8,3 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
-    # method makes objects display as .name attribute in shell or admin

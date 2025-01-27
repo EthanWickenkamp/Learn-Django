@@ -22,8 +22,8 @@ services:
       retries: 3
 
 
-  web:
-    container_name: django_web
+  backend:
+    container_name: django_backend
     build: 
       context: ./backend
       dockerfile: .devcontainer/Dockerfile

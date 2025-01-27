@@ -1,17 +1,14 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
+
 {
-	"name": "DevContFront",
+	"name": "FrontendDevContainer",
 
-
-	//docker compose properties
 	"dockerComposeFile": ["../../docker-compose.yml"],
 	"service": "frontend",
-    //"runServices": ["frontend", "web"],
+    "runServices": ["frontend", "backend", "db"],
 	"workspaceFolder": "/app",
-	// sets folder for vs code
 
-
+	"overrideCommand": true,
+	"forwardPorts": [5173],
 
 	"customizations": {
         "vscode": {
@@ -21,22 +18,12 @@
 				"ms-azuretools.vscode-docker"
             ]
         }
-    },
+    }
 	
-	"forwardPorts": [5173],
-	
-	"postCreateCommand": "bash ss.sh"
+	// "postCreateCommand": "bash ss.sh"
+	// "features": {},
+	// "remoteUser": "devcontainer"
 
 }
 
-	//"postCreateCommand": "/bin/bash config/ss.sh"
-	//"postCreateCommand": "python learn/manage.py runserver 0.0.0.0:8000"
-	
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
-
-	// Configure tool-specific properties.
-	// "customizations": {},
-	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "devcontainer"
 
