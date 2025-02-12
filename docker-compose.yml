@@ -1,8 +1,4 @@
 services:
-<<<<<<< Updated upstream
-#try fork 1
-=======
->>>>>>> Stashed changes
   db:
     container_name: mysql_db
     image: mysql:8.0
