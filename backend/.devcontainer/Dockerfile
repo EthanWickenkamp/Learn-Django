@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     pkg-config\
     build-essential\
     python3-dev\
+    default-mysql-client \
     default-libmysqlclient-dev\
     && rm -rf /var/lib/apt/lists/*
 
@@ -20,6 +21,6 @@ COPY . .
 
 EXPOSE 8000
 
-#CMD ["bash"]
+CMD ["bash", "ss.sh"]
 
 

@@ -4,10 +4,9 @@
 
 	"dockerComposeFile": ["../../docker-compose.yml"],
 	"service": "frontend",
-    "runServices": ["frontend", "backend", "db"],
 	"workspaceFolder": "/app",
 
-	"overrideCommand": true,
+	"overrideCommand": false,
 	"forwardPorts": [5173],
 
 	"customizations": {

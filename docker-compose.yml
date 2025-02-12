@@ -1,8 +1,12 @@
 services:
+<<<<<<< Updated upstream
 #try fork 1
+=======
+>>>>>>> Stashed changes
   db:
     container_name: mysql_db
-    image: mysql:latest
+    image: mysql:8.0
+    
     #restart: always
         
     env_file:
@@ -13,13 +17,13 @@ services:
 
     ports:
      - "3306:3306"
-    
 
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
       timeout: 5s
       retries: 3
+      start_period: 30s
 
 
   backend:
@@ -38,6 +42,12 @@ services:
 
     working_dir: /app
     command: bash ss.sh
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
     depends_on:
       db:
@@ -61,8 +71,9 @@ services:
     working_dir: /app
     command: bash ss.sh
 
+    depends_on:
+      - "backend"
 
 
 volumes: 
   mysql_data:
-  #mounted persistant data folder /var/lib/mysql into this docker volume

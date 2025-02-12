@@ -4,10 +4,9 @@
 
 	"dockerComposeFile": ["../../docker-compose.yml"],
 	"service": "backend",
-	"runServices": ["backend", "frontend", "db"],
 	"workspaceFolder": "/app",
 
-	"overrideCommand": true,
+	"overrideCommand": false,
 	"forwardPorts": [8000],
 
 	"customizations": {
@@ -15,6 +14,7 @@
 			"settings": {},
             "extensions": [
                 "ms-python.python",
+				"ms-python.vscode-pylance",
 				"ms-azuretools.vscode-docker"
             ]
         }
