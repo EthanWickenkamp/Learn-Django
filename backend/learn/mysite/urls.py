@@ -19,6 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include("firstapp.urls")),
+    path("", include("firstapp.urls")), # is this one doing anything if only api backend
     path('api/', include('api.urls')),
 ]

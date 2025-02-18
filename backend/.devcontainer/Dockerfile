@@ -21,6 +21,6 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["bash", "ss.sh"]
+# CMD ["bash", "ss.sh"]
 
 
