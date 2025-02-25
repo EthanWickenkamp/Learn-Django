@@ -1,6 +1,7 @@
 {
 	"name": "learn",
 	"version": "0.0.1",
+	"packageManager": "npm@9",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
@@ -23,6 +24,9 @@
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
 		}
+	},
+	"dependencies": {
+	
 	},
 	"peerDependencies": {
 		"svelte": "^5.0.0"
