@@ -1,20 +1,24 @@
 # Ignore the .env file
 .env
 
-# Python-related ignores
+# Python related ignores
 *.pyc
 *.pyo
 __pycache__/
 
-# Django-related ignores
-db.sqlite3
+# Django related ignores
 /media/
 staticfiles/
 
-# Docker-related ignores
+#Svelte related ignores
+node_modules/
+.svelte-kit/
+dist/
+
+# Docker related ignores
 *.env
 *.log
 .env.*
 
-# VS Code-related ignores
+# VSCode related ignores
 .vscode/
