@@ -10,12 +10,14 @@ class ItemSerializer(serializers.ModelSerializer):
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
-        fields = '__all__'
+        fields = ['name', 'slug']
 
 class GameSerializer(serializers.ModelSerializer):
+    home_team = TeamSerializer(read_only=True)
+    away_team = TeamSerializer(read_only=True)
     class Meta:
         model = Game
-        fields = '__all__'
+        fields = ['game_date', 'home_team', 'away_team', 'home_team_score', 'away_team_score']
 
 class PlayerSerializer(serializers.ModelSerializer):
     class Meta:

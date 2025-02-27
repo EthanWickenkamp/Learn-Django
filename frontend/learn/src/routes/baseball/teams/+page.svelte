@@ -7,7 +7,7 @@
     {#each data.teams as team}
       <li>
         <!-- Link uses team.slug -->
-        <a href={`/baseball/teams/${encodeURIComponent(team)}`}>
+        <a href={`/baseball/teams/${encodeURIComponent(team.slug)}`}>
           {team.name}
         </a>
       </li>

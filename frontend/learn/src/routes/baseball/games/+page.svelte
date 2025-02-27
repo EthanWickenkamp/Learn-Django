@@ -7,7 +7,7 @@
     <ul>
       {#each data.games as game}
         <li>
-          {game.home_team?.name || 'TBD'} vs {game.away_team?.name || 'TBD'} on {game.game_date}
+          {game.home_team.name} vs {game.away_team.name} on {game.game_date}
         </li>
       {/each}
     </ul>
