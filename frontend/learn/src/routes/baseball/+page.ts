@@ -1,6 +1,6 @@
+import type { PageLoad } from './$types.js';
 
-
-export const load = async ({ fetch }) => {
+export const load: PageLoad = async ({ fetch }) => { //typescript type checking as PageLoad only done here
   // Define the API endpoints for each model.
   const endpoints = [
     '/api/items/',

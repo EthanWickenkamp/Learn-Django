@@ -6,7 +6,7 @@
     // Navigate to a hypothetical edit page for a given section.
     function editSection(section: string) {
       // For example, navigating to /dashboard/edit/items or /dashboard/edit/teams
-      goto(`/dashboard/edit/${section}`);
+      goto(`/baseball/edit/${section}`);
     }
 </script>
   
