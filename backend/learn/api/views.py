@@ -35,3 +35,4 @@ class GameViewSet(viewsets.ModelViewSet):
 class PlayerViewSet(viewsets.ModelViewSet):
     queryset = Player.objects.all()
     serializer_class = PlayerSerializer
+    lookup_field = 'name'
