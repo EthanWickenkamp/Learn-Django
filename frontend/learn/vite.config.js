@@ -15,6 +15,7 @@ export default defineConfig({
                 target: 'http://backend:8000', // Django backend
                 changeOrigin: true,             // Needed for proxying cross-origin requests
                 //rewrite: (path) => path.replace(/^\/api/, '/api'), // Keeps the /api prefix intact
+                secure: false
             },
         },
     },

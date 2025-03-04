@@ -1,16 +1,19 @@
 from django.shortcuts import render
 
 # Create your views here.
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from firstapp.models import Item, Team, Game, Player
 from .serializers import ItemSerializer, TeamSerializer, GameSerializer, PlayerSerializer
     
-
+@method_decorator(csrf_exempt, name='dispatch')
 class ItemViewSet(viewsets.ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
+    lookup_field = 'name'
 
 
 class TeamViewSet(viewsets.ModelViewSet):

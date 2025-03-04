@@ -1,6 +1,6 @@
 <!-- src/routes/baseball/teams/[slug]/+page.svelte -->
 <script lang="ts">
-  // The `data` prop is provided by the load function
+  // The `data`A prop is provided by the load function
   export let data;
 </script>
 
